@@ -32,7 +32,7 @@ st.markdown("""
 st.title("📝 Spec Table Extractor")
 st.markdown("Upload a Word document to extract tables into an Excel file.")
 
-uploaded_file = st.file_uploader("Choose a Word file", type="docx")
+uploaded_file = st.file_uploader("Choose a Word file", type=["docx", "doc"])
 
 if uploaded_file is not None:
     try:
