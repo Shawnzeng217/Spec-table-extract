@@ -30,7 +30,10 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.title("📝 Spec Table Extractor")
-st.markdown("Upload a Word document to extract tables into an Excel file.")
+st.markdown("""
+    **Only extracts tables and ignores regular text.**  
+    Upload any Word document with mixed content, and I will find all tables for you.
+""")
 
 uploaded_file = st.file_uploader("Choose a Word file", type=["docx", "doc"])
 
