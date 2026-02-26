@@ -1,0 +1,21 @@
+# Python temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Streamlit config (optional)
+# .streamlit/config.toml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Private data files
+*.docx
+*.xlsx
+!Spec table extract.docx
