@@ -34,6 +34,18 @@ st.markdown("Upload a Word document to extract tables into an Excel file.")
 
 uploaded_file = st.file_uploader("Choose a Word file", type=["docx", "doc"])
 
+def deduplicate_columns(columns):
+    new_columns = []
+    seen = {}
+    for col in columns:
+        if col in seen:
+            seen[col] += 1
+            new_columns.append(f"{col}_{seen[col]}")
+        else:
+            seen[col] = 0
+            new_columns.append(col)
+    return new_columns
+
 if uploaded_file is not None:
     try:
         doc = docx.Document(uploaded_file)
@@ -48,13 +60,16 @@ if uploaded_file is not None:
                 for i, table in enumerate(doc.tables):
                     data = []
                     for row in table.rows:
+                        # Handle potential merged cells by getting unique text in each cell
                         row_data = [cell.text.strip() for cell in row.cells]
                         data.append(row_data)
                     
                     df = pd.DataFrame(data)
                     
                     if not df.empty:
-                        df.columns = df.iloc[0]
+                        # Extract headers and deduplicate them
+                        headers = [str(c).strip() for c in df.iloc[0]]
+                        df.columns = deduplicate_columns(headers)
                         df = df[1:]
                     
                     sheet_name = f"Table_{i+1}"
