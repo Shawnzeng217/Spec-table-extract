@@ -20,6 +20,7 @@ This is the most professional way to share the tool. Your colleagues will access
 2.  **Upload Files**: Upload the following files:
     - `app.py`
     - `requirements.txt`
+    - `packages.txt`
     - `.streamlit/config.toml`
     - `README.md`
     - `.gitignore`
@@ -30,6 +31,11 @@ This is the most professional way to share the tool. Your colleagues will access
 3.  Select your repository, the main branch, and set the file path to `app.py`.
 4.  Click **"Deploy!"**.
 5.  Wait a minute, and you will get a permanent URL (e.g., `https://your-app-name.streamlit.app`) to share.
+
+### Notes for `.doc` Support Online
+- This app supports automatic `.doc` to `.docx` conversion.
+- On Streamlit Cloud (Linux), conversion uses LibreOffice headless from `packages.txt`.
+- First deployment may take longer because system packages need to be installed.
 
 ---
 

@@ -2,3 +2,4 @@ streamlit
 python-docx
 pandas
 openpyxl
+pywin32; platform_system == "Windows"
